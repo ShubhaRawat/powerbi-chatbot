@@ -37,7 +37,7 @@ user_question = st.chat_input("Ask about your data...")
 if user_question:
     with st.spinner("Analyzing your data..."):
         # Summarize dataset to make context lightweight
-        summary = df.head(20).to_string(index=False)
+        summary = df.to_string(index=False)
         prompt = f"""
         You are a helpful data analysis assistant.
         The dataset is shown below:
@@ -61,4 +61,5 @@ for message in st.session_state.chat_history:
         st.chat_message("user").write(message["content"])
     else:
         st.chat_message("assistant").write(message["content"])
+
 
