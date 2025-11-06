@@ -3,7 +3,8 @@ import pandas as pd
 import google.generativeai as genai
 
 # --- CONFIG ---
-genai.configure(api_key="YOUR_API_KEY_HERE")  
+import os
+genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 model = genai.GenerativeModel("gemini-2.0-flash")
 
 st.set_page_config(
@@ -60,3 +61,4 @@ for message in st.session_state.chat_history:
         st.chat_message("user").write(message["content"])
     else:
         st.chat_message("assistant").write(message["content"])
+
