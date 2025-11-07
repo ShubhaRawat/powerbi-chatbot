@@ -2,6 +2,9 @@ import streamlit as st
 import pandas as pd
 import google.generativeai as genai
 
+import streamlit as st
+st.set_page_config(page_title="Power BI Chatbot", layout="wide")
+
 # --- CONFIG ---
 import os
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
@@ -61,5 +64,6 @@ for message in st.session_state.chat_history:
         st.chat_message("user").write(message["content"])
     else:
         st.chat_message("assistant").write(message["content"])
+
 
 
